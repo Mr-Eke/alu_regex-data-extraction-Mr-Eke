@@ -31,7 +31,7 @@ required data and print them out
 emails = extractor.extract_emails()
 title = "Extracted Emails:"
 
-print(f"\n{title}\n{'-' * len(title)}")  # line
+print(f"\n{title}\n{'-' * len(title)}")  # print a line
 for email in emails:
     print(email)
 
