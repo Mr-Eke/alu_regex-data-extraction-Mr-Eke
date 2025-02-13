@@ -28,7 +28,7 @@ class DataExtractor:
     def extract_urls(self):
         """ Extracts and returns a list of all URLs """
 
-        pattern = r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
+        pattern = r'https?://(?:[-\w]|(?:%[\da-fA-F]{2})|\.(?!\.|$))+(?<!\.)'
         return re.findall(pattern, self.sample_text)
 
     def extract_phone_numbers(self):

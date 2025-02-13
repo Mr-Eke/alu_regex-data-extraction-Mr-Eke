@@ -2,23 +2,23 @@
 
 from data_extractor import DataExtractor
 
-
 # Sample text/string to extract relevant data from
 test_string = """
-Contact me at john.doe@example.com and support@company.org for inquiries.
-Visit our website at https://example.com or check our blog at http://blog.example.net.
-You can also reach us at +1234567890 or (987) 654-3210 for support.
-Follow us on social media: https://twitter.com/user, http://facebook.com/page,
-and https://linkedin.com/in/user-profile.
-Our customer service emails: help@service.com, info@business.io,
-support@xyz-company.co.uk.
-Need a job? Send your CV to careers@startup.ai or hr@bigcorp.com.
+Contact me at c.eke@alustudent.com and for any support
+inquiries, reach out to support@alueducation.com. or wdebela@alueducation.com
+Visit our website at https://example.com or check our blog at
+http://elgibbor.hashnode.dev. You can also reach me at +1234567890
+or (987) 654-3210 for business only.
+Follow me on social media: https://www.linkedin.com/in/chiago/,
+My customer service emails: help@eke.com, info@eke.io, support@eke-chi.co.uk.
+Need a job? Send your CV to careers@eke.ai or hr@ekegrp.com.
 Scam alert! Ignore fake emails like winner@lottery.com and banking@fraud.net.
-Click on this suspicious link: http://phishing-site.com/login?user=you
 Emergency contacts: +1-800-555-0199, +44 7700 900123, or 555-012-3456.
-Check this out: ftp://files.example.com (Note: Should not be detected as an HTTP URL).
+Check this: ftp://files.example.com (Note: an HTTP URL - not extracted).
 Email me at first.last123@sub.example.co.in or admin@domain.travel for updates.
-Random text with no emails, no URLs, and no phone numbers to test false positives.
+need to buy chapati? here are my credit cards are 1234-5678-9876-5432 and
+4321 8765 5678 1234. but fear Jesus and dont take morethan $5,000
+Don't match this: just a random text. Another one: http://localhost:8000/test
 """
 
 # Create a data extractor instance
