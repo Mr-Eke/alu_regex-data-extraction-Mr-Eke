@@ -22,3 +22,19 @@ title = "\nExtracted Emails:"
 print(f"\n{title}\n{'-' * len(title)}")
 for email in emails:
     print(email)
+
+urls = extractor.extract_urls()
+title = "Extracted Urls:"
+
+print(f"\n{title}\n{'-' * len(title)}")
+for url_item in urls:
+    print(url_item)
+
+phone_nums = extractor.extract_phone_numbers()
+title = "Extracted Phone numbers:"
+
+print(f"\n{title}\n{'-' * len(title)}")
+for phone_num in phone_nums:
+    print(phone_num)
+
+
