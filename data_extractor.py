@@ -1,8 +1,8 @@
 #!/usr/env/python3
 """
-    This script holds a DataExtractor class to extract emails, URLs, phone numbers,
-    credit card numbers, time in 12-hour or 24-hour format, HTML tags, hashtags,
-    and currency amounts from a given API string response using regular expression.
+This script holds a DataExtractor class to extract emails, URLs, phone numbers,
+credit card numbers, time in 12-hour or 24-hour format, HTML tags, hashtags,
+and currency amounts from a given API string response using regular expression.
 """
 
 import re
@@ -32,7 +32,7 @@ class DataExtractor:
         return re.findall(pattern, self.sample_text)
 
     def extract_phone_numbers(self):
-        """ Extractand returns a list of phone numbers """
+        """ Extract and returns a list of phone numbers """
 
         pattern = r'\+?1?\d{9,15}'
         return re.findall(pattern, self.sample_text)
