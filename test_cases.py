@@ -21,7 +21,6 @@ Email me at first.last123@sub.example.co.in or admin@domain.travel for updates.
 Random text with no emails, no URLs, and no phone numbers to test false positives.
 """
 
-
 # Create a data extractor instance
 extractor = DataExtractor(test_string)
 
