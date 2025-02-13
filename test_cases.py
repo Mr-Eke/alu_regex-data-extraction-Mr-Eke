@@ -17,7 +17,7 @@ Extract, loop through the list of extracted required data
 and print them out
 """
 emails = extractor.extract_emails()
-title = "\nExtracted Emails:"
+title = "Extracted Emails:"
 
 print(f"\n{title}\n{'-' * len(title)}")
 for email in emails:
