@@ -37,7 +37,7 @@ class DataExtractor:
         pattern = r'\+?\d{1,3}[-.\s]?\d{3,4}[-.\s]?\d{3}[-.\s]?\d{3,4}'
         return re.findall(pattern, self.sample_text)
 
-    def extract_credit_cards(self) ->list:
+    def extract_credit_cards(self) -> list:
         """Extracts and returns a list of credit card numbers."""
 
         pattern = r'\b(?:\d{4}[-\s]?){3}\d{4}\b'

@@ -4,21 +4,51 @@ from data_extractor import DataExtractor
 
 # Sample text/string to extract relevant data from
 test_string = """
-Contact me at c.eke@alustudent.com and for any support
-inquiries, reach out to support@alueducation.com. or wdebela@alueducation.com
-Visit our website at https://example.com or check our blog at
-http://elgibbor.hashnode.dev. You can also reach me at +1234567890
-or (987) 654-3210 for business only.
-Follow me on social media: https://www.linkedin.com/in/chiago/,
-My customer service emails: help@eke.com, info@eke.io, support@eke-chi.co.uk.
-Need a job? Send your CV to careers@eke.ai or hr@ekegrp.com.
-Scam alert! Ignore fake emails like winner@lottery.com and banking@fraud.net.
-Emergency contacts: +1-800-555-0199, +44 7700 900123, or 555-012-3456.
-Check this: ftp://files.example.com (Note: an HTTP URL - not extracted).
-Email me at first.last123@sub.example.co.in or admin@domain.travel for updates.
-need to buy chapati? here are my credit cards are 1234-5678-9876-5432 and
-4321 8765 5678 1234. but fear Jesus and dont take morethan $5,000
-Don't match this: just a random text. Another one: http://localhost:8000/test
+======= Edge Cases: Invalid Email Addresses ========
+
+o'connor@example.com "very.unusual.@.unusual.com"@example.com
+"user\\\"name"@example.com user@[192.168.1.1]
+My email is user(at)example.com user@@example.com user@example..com.
+user@, user.example.com  # (Invalid: missing @)
+example.emailaddress.com  # (Invalid: looks like a domain, not an email)
+"email": "user@example,com"  # (Invalid: comma instead of dot)
+
+============ Valid Email Addresses =============
+
+eke-chi.me@example.co.uk alt email: eke101.c@alustudent.com
+Contact me at c.eke@alustudent.com and for any support inquiries,
+reach out to support@alueducation.com.
+emails in bracket (braces@example.org) <anglebracket@example.org>
+
+ ========= Edge Cases: Invalid URLs (Not Matched) =========
+
+    "http:/example.com",        - Missing slash
+    "https//example.com",       - Missing colon
+    "ftp:example.com",          - Missing slashes
+    "://example.com",           - Missing protocol
+    "https://", https://        - Missing domain
+    "https://.com",             - Missing domain name
+    "https://example",          - Missing TLD
+     https://.eke.com",         - Domain starts with dot
+    "https://example..com",     - Consecutive dots
+    "https://exam ple.com",     - Space in domain
+    "https://exam_ple.com",     - Underscore in domain name (invalid)
+
+============== Valid Urls (Matched) ===============
+
+    "https://eke.com/#", https://eke.com. checkout my socials and connect
+     with me at https://www.linkedin.com/in/chiago/, http://www.eke-chi.tech
+
+============ Edge Cases: Phone numbers (Different formats) =============
+
+(123) 456-7890 or call the below numbers
+123-456-7890 123.456.7890. you can  also reach Herve at
++250788899944, +1 123-456-7890.
+
+==================== credit Card =====================
+1234 5678 9012 3456
+1234-5678-9012-3456
+
 """
 
 # Create a data extractor instance
@@ -32,21 +62,29 @@ emails = extractor.extract_emails()
 title = "Extracted Emails:"
 
 print(f"\n{title}\n{'-' * len(title)}")  # print a line
-for email in emails:
-    print(email)
+print("\n".join(emails) if emails else "No URLs found")
+print('---')
 
 urls = extractor.extract_urls()
 title = "Extracted Urls:"
 
 print(f"\n{title}\n{'-' * len(title)}")
-for url_item in urls:
-    print(url_item)
+print("\n".join(urls) if urls else "No URLs found")
+print('---')
 
 phone_nums = extractor.extract_phone_numbers()
 title = "Extracted Phone numbers:"
 
 print(f"\n{title}\n{'-' * len(title)}")
-for phone_num in phone_nums:
-    print(phone_num)
+print("\n".join(phone_nums) if phone_nums else "No phone number found")
+print('---')
+
+card = extractor.extract_credit_cards()
+title = "Extracted Credit Card Numbers:"
+
+print(f"\n{title}\n{'-' * len(title)}")
+print("\n".join(card) if card else "No credit card numbers found.")
+print('---')
+
 
 
