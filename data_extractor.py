@@ -23,13 +23,12 @@ class DataExtractor:
         """ Extracts and returns a list of emails """
 
         pattern = r'\b[A-Za-z0-9_%+-]+(?:\.[A-Za-z0-9_%+-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}\b'
-
         return re.findall(pattern, self.sample_text)
 
     def extract_urls(self):
         """ Extracts and returns a list of all URLs """
 
-        pattern = r'https?://(?:[-\w]|(?:%[\da-fA-F]{2})|\.(?!\.|$))+(?<!\.)'
+        pattern = r'https?://(?:(?:[-\w]+\.)+[a-zA-Z]{2,}|localhost|\d{1,3}(?:\.\d{1,3}){3})(?::\d{1,5})?(?:/[-\w%.~+]*)*(?:\?[-\w%.~+=&]*)?(?:#[-\w%]*)?'
         return re.findall(pattern, self.sample_text)
 
     def extract_phone_numbers(self):
