@@ -22,7 +22,8 @@ class DataExtractor:
     def extract_emails(self):
         """ Extracts and returns a list of emails """
 
-        pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        pattern = r'\b[A-Za-z0-9_%+-]+(?:\.[A-Za-z0-9_%+-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}\b'
+
         return re.findall(pattern, self.sample_text)
 
     def extract_urls(self):
