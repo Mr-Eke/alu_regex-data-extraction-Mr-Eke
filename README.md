@@ -19,7 +19,7 @@ git clone https://github.com/Mr-Eke/alu_regex-data-extraction-Mr-EKE.git
 ```
 - Switch to the Project Directory
 ```
-cd alu_regex-data-extraction
+cd alu_regex-data-extraction-Mr-Eke
 ```
 ## Dependencies:
 This project uses Python's built-in ```re module```, so no additional packages are required.  
@@ -53,3 +53,5 @@ Extracted Phone numbers:
 ```
 ## Customizing the Extraction:
 - **Modify Input:** Update the ```test_string``` variable in the ```test_cases.py``` script with your own text to test different extraction scenarios.
+## Author 🧠
+**Chiagoziem Eke** - [Linkedin](https://www.linkedin.com/in/chiago/) | [Blog](http://elgibbor.hashnode.dev) | [Email](c.eke@alustudent.com)
