@@ -52,7 +52,7 @@ Extracted Phone numbers:
 ...
 ```
 ## Customizing the Extraction:
-In case you want to have the script extract the above mentioned relevant data from your own string/text, then follow the below steps:
-- **Modify Input:** Update the ```test_string``` variable in the ```test_cases.py``` script with your own text and run the ```test_cases.py``` script again to test different extraction scenarios.
+In case you want to have the script extract the above mentioned relevant data from your own string/text, then follow the below steps: ⤵️
+- **Modify Input:** Update the ```test_string``` variable in the ```test_cases.py``` script with your own text/sample string and run the ```test_cases.py``` script again to test different extraction scenarios.
 ## Author 🧠
 **Chiagoziem Eke** - [Linkedin](https://www.linkedin.com/in/chiago/) | [Blog](http://elgibbor.hashnode.dev) | [Email](c.eke@alustudent.com)
