@@ -43,5 +43,10 @@ class DataExtractor:
         pattern = r'\b(?:\d{4}[-\s]?){3}\d{4}\b'
         return re.findall(pattern, self.sample_text)
 
+    def extract_time(self) -> list:
+        """Extracts and returns a list of time formats."""
+        pattern = r'\b((?:[01]?\d|2[0-3]):[0-5]\d(?:\s?[APap][Mm])?|\b(?:0?[1-9]|1[0-2]):[0-5]\d\s?[APap][Mm])\b'
+        return re.findall(pattern, self.sample_text)
+
 
 
