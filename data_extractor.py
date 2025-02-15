@@ -28,9 +28,10 @@ class DataExtractor:
         return re.findall(pattern, self.sample_text)
 
     def extract_phone_numbers(self) -> list[str]:
-        """ Extract and returns a list of phone numbers """
-        pattern = r'\+?\d{1,3}[-.\s]?\d{3,4}[-.\s]?\d{3}[-.\s]?\d{3,4}'
-        return re.findall(pattern, self.sample_text)
+       """Extract and return a list of phone numbers."""
+       pattern = r'\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}'
+       return re.findall(pattern, self.sample_text)
+
 
     def extract_credit_cards(self) -> list[str]:
         """Extracts and returns a list of credit card numbers."""
