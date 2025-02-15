@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
+from typing import Callable, Dict
 from data_extractor import DataExtractor
 
 # Sample text/string to extract relevant data from
 test_string = """
 ======= Edge Cases: Invalid Email Addresses ========
-
 o'connor@example.com "very.unusual.@.unusual.com"@example.com
 "user\\\"name"@example.com user@[192.168.1.1]
 My email is user(at)example.com user@@example.com user@example..com.
@@ -14,13 +14,11 @@ example.emailaddress.com  # (Invalid: looks like a domain, not an email)
 "email": "user@example,com"  # (Invalid: comma instead of dot)
 
 ============ Valid Email Addresses =============
-
 eke-chi.me@example.co.uk alt email: eke101.c@alustudent.com
 Contact me at c.eke@alustudent.com and for any support inquiries,
 reach out to support@alueducation.com. emails in bracket (braces@example.org)
 
  ========= Edge Cases: Invalid URLs (Not Matched) =========
-
     "http:/example.com",        - Missing slash
     "https//example.com",       - Missing colon
     "://example.com",           - Missing protocol
@@ -33,12 +31,10 @@ reach out to support@alueducation.com. emails in bracket (braces@example.org)
     "https://exam_ple.com",     - Underscore in domain name (invalid)
 
 ============== Valid Urls (Matched) ===============
-
 "https://eke.com/#", https://eke.com. checkout my socials and connect
  with me at https://www.linkedin.com/in/chiago/, http://www.eke-chi.tech
 
 ========== Edge Cases: Phone numbers (Different formats) =========
-
 (123) 456-7890 or call this number 123-456-7890 123.456.7890.
 you can reach Herve at +250788899944, +1 123-456-7890.
 
@@ -59,15 +55,14 @@ Invalid (Morethan a credit card lenght): 1234-5678-9012-345655
 #example #ThisIsAHashtag-#AluSWE
 
 ========== Currency amounts: ===========
-$19.99
-$1,234.56
+$19.99 $1,234.56
 """
 
 # creat an instance of DataExtractor with the sample string
-extractor = DataExtractor(test_string)
+extractor: DataExtractor = DataExtractor(test_string)
 
 # Map section titles to their respective extraction functions
-extractors = {
+extractors: Dict[str, Callable[[], list[str]]] = {
     "Extracted URLs:": extractor.extract_urls,
     "Extracted Hashtags": extractor.get_hashtags,
     "Extracted Emails:": extractor.extract_emails,
@@ -80,7 +75,7 @@ extractors = {
 
 # Loop through each extraction method and print the results
 for title, extract_func in extractors.items():
-    print(f"\n{title}\n{'-' * len(title)}")
+    print(f"\n{title}\n{'-' * len(title)}")  # prints a line
     results = extract_func()
     print("\n".join(results) if results else f"No {title.split()[1].lower()} found.")
     print('---')
