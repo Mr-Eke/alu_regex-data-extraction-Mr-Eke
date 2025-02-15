@@ -6,8 +6,6 @@ and currency amounts from a given API string response using regular expression.
 """
 
 import re
-from typing import Type
-
 
 class DataExtractor:
     """
