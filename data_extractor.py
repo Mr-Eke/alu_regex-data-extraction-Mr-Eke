@@ -42,7 +42,7 @@ class DataExtractor:
         pattern = r'\b((?:[01]?\d|2[0-3]):[0-5]\d(?:\s?[APap][Mm])?|\b(?:0?[1-9]|1[0-2]):[0-5]\d\s?[APap][Mm])\b'
         return re.findall(pattern, self.sample_text)
 
-    def get_html_tags(self) -> list:
+    def get_html_tags(self) -> list[str]:
         """ Returns a list of all matching HTML tags."""
         pattern = r'<[^>]+>'
         return re.findall(pattern, self.sample_text)
@@ -52,7 +52,7 @@ class DataExtractor:
         pattern = r'#[A-Za-z0-9_]+'
         return re.findall(pattern, self.sample_text)
 
-    def get_currency_amounts(self) -> list:
+    def get_currency_amounts(self) -> list[str]:
         """ Returns a list of all matching currency amounts."""
         pattern = r'\$\d{1,3}(?:,\d{3})*(?:\.\d{2})?'
         return re.findall(pattern, self.sample_text)
