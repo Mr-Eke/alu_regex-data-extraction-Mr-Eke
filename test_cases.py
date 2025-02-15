@@ -17,14 +17,12 @@ example.emailaddress.com  # (Invalid: looks like a domain, not an email)
 
 eke-chi.me@example.co.uk alt email: eke101.c@alustudent.com
 Contact me at c.eke@alustudent.com and for any support inquiries,
-reach out to support@alueducation.com.
-emails in bracket (braces@example.org) <anglebracket@example.org>
+reach out to support@alueducation.com. emails in bracket (braces@example.org)
 
  ========= Edge Cases: Invalid URLs (Not Matched) =========
 
     "http:/example.com",        - Missing slash
     "https//example.com",       - Missing colon
-    "ftp:example.com",          - Missing slashes
     "://example.com",           - Missing protocol
     "https://", https://        - Missing domain
     "https://.com",             - Missing domain name
@@ -36,55 +34,53 @@ emails in bracket (braces@example.org) <anglebracket@example.org>
 
 ============== Valid Urls (Matched) ===============
 
-    "https://eke.com/#", https://eke.com. checkout my socials and connect
-     with me at https://www.linkedin.com/in/chiago/, http://www.eke-chi.tech
+"https://eke.com/#", https://eke.com. checkout my socials and connect
+ with me at https://www.linkedin.com/in/chiago/, http://www.eke-chi.tech
 
-============ Edge Cases: Phone numbers (Different formats) =============
+========== Edge Cases: Phone numbers (Different formats) =========
 
-(123) 456-7890 or call the below numbers
-123-456-7890 123.456.7890. you can  also reach Herve at
-+250788899944, +1 123-456-7890.
+(123) 456-7890 or call this number 123-456-7890 123.456.7890.
+you can reach Herve at +250788899944, +1 123-456-7890.
 
 ==================== credit Card =====================
-1234 5678 9012 3456
-1234-5678-9012-3456
+1234 5678 9012 3456,1234-5678-9012-3456
+Invalid (Morethan a credit card lenght): 1234-5678-9012-345655
 
+==================== Valid Time Formats =====================
+14:30 02:30 pm, 01:30 am - 03:01AM*04:01 PM
+
+============ Invalid Time formats (Not matched) ============
+ 15:60 24:30  2: 20,  5:10  PM, 01:30  am
+
+ ========= HTML tags: ========
+<p><div class="example">, <img src="image.jpg" alt="description"/>
+
+============== Hashtags: ==============
+#example #ThisIsAHashtag-#AluSWE
+
+========== Currency amounts: ===========
+$19.99
+$1,234.56
 """
 
-# Create a data extractor instance
+# creat an instance of DataExtractor with the sample string
 extractor = DataExtractor(test_string)
 
-"""
-Extract, then loop through the list of extracted
-required data and print them out
-"""
-emails = extractor.extract_emails()
-title = "Extracted Emails:"
+# Map section titles to their respective extraction functions
+extractors = {
+    "Extracted URLs:": extractor.extract_urls,
+    "Extracted Hashtags": extractor.get_hashtags,
+    "Extracted Emails:": extractor.extract_emails,
+    "Extracted Html Tags": extractor.get_html_tags,
+    "Extracted Time Formats:": extractor.extract_time,
+    "Extracted Phone Numbers:": extractor.extract_phone_numbers,
+    "Extracted Currency Amounts": extractor.get_currency_amounts,
+    "Extracted Credit Card Numbers:": extractor.extract_credit_cards,
+}
 
-print(f"\n{title}\n{'-' * len(title)}")  # print a line
-print("\n".join(emails) if emails else "No URLs found")
-print('---')
-
-urls = extractor.extract_urls()
-title = "Extracted Urls:"
-
-print(f"\n{title}\n{'-' * len(title)}")
-print("\n".join(urls) if urls else "No URLs found")
-print('---')
-
-phone_nums = extractor.extract_phone_numbers()
-title = "Extracted Phone numbers:"
-
-print(f"\n{title}\n{'-' * len(title)}")
-print("\n".join(phone_nums) if phone_nums else "No phone number found")
-print('---')
-
-card = extractor.extract_credit_cards()
-title = "Extracted Credit Card Numbers:"
-
-print(f"\n{title}\n{'-' * len(title)}")
-print("\n".join(card) if card else "No credit card numbers found.")
-print('---')
-
-
-
+# Loop through each extraction method and print the results
+for title, extract_func in extractors.items():
+    print(f"\n{title}\n{'-' * len(title)}")
+    results = extract_func()
+    print("\n".join(results) if results else f"No {title.split()[1].lower()} found.")
+    print('---')
